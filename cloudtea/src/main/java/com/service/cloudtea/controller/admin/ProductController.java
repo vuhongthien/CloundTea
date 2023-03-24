@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import static com.service.cloudtea.utils.ProductUtils.calculateEndDate;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/cloud-tea")
 public class ProductController {
     @Autowired
     ProductServiceImpl productService;
@@ -27,7 +27,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/list-product-all/1/2
      */
-    @GetMapping("/list-product-all/{pageNumber}/{pageSize}")
+    @GetMapping("/product-all/{pageNumber}/{pageSize}")
     public Page<Product> listAll(@PathVariable(name = "pageNumber") Integer pageNumber,
                                  @PathVariable(name = "pageSize") Integer pageSize) {
         return productService.findAllProduct(PageRequest.of(pageNumber, pageSize));
@@ -36,7 +36,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/list-product/0/3
      */
-    @GetMapping("/list-product/{pageNumber}/{pageSize}")
+    @GetMapping("/product/{pageNumber}/{pageSize}")
     public Page<ProductDto> listAllDto(@PathVariable(name = "pageNumber") Integer pageNumber,
                                        @PathVariable(name = "pageSize") Integer pageSize) {
         return productService.findAllProductDto(PageRequest.of(pageNumber, pageSize));
@@ -45,7 +45,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/find-product
      */
-    @GetMapping("/find-product")
+    @GetMapping("/product")
     public ResponseEntity<ProductDto> findProductDto(@RequestParam("product_id") Long productId) {
         ProductDto productDto = productService.findByIdDto(productId);
         if (productDto == null) {
@@ -57,7 +57,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/add-product
      */
-    @PostMapping("/add-product")
+    @PostMapping("/product")
     public ProductDto addProduct(@RequestParam("type_product_id") Long typeProductId,
                                  @RequestParam("product_image") MultipartFile productImage,
                                  @RequestParam("product_discount") float productDiscount,
@@ -84,7 +84,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/edit-product
      */
-    @PutMapping("/edit-product")
+    @PatchMapping("/product")
     public ProductDto editProduct(@RequestParam("type_product_id") Long typeProductid,
                                   @RequestParam("product_id") Long productId,
                                   @RequestParam("product_image") MultipartFile productImage,
@@ -110,7 +110,7 @@ public class ProductController {
     /**
      * http://localhost:8080/api/drop-product
      */
-    @DeleteMapping("/drop-product")
+    @DeleteMapping("/product")
     public ResponseEntity<String> dropProduct(@RequestParam("product_id") Long id) {
         productService.delete(id);
         return new ResponseEntity<>("Product deleted successfully", HttpStatus.OK);

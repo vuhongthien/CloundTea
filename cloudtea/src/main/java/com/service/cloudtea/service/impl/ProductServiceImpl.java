@@ -59,7 +59,6 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
         ProductDto productDto = mapper.map(product.get(), ProductDto.class);
-//        ProductType typeServiceById = productTypeService.findById(productDto.getProductTypeId());
         productDto.setTypeProductName(product.get().getProductType().getTypeProductName());
         return productDto;
     }
