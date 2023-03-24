@@ -22,7 +22,7 @@ public class ProductTypeController {
         return productTypeService.findAllProductType();
     }
 
-    @PostMapping("/add-product-type")
+    @PostMapping("/product-type")
     public ProductType addProductType(@RequestParam("TypeProductName") String TypeProductName){
         ProductType productType = new ProductType();
         productType.setTypeProductName(TypeProductName);
@@ -30,7 +30,7 @@ public class ProductTypeController {
         return productTypeService.create(productType);
     }
 
-    @PutMapping("/edit-product-type")
+    @PutMapping("/product-type")
     public ProductType editProductType(@RequestParam("TypeProductName") String TypeProductName,
                                 @RequestParam("Active")int Active,
                                 @RequestParam("id") Long id){
@@ -40,7 +40,7 @@ public class ProductTypeController {
         return productTypeService.create(ProductType);
     }
 
-    @DeleteMapping("/drop-product-type")
+    @DeleteMapping("/product-type")
     public ResponseEntity dropProductType(@RequestParam("id") Long id){
          productTypeService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
