@@ -17,7 +17,7 @@ public class ProductTypeController {
     @Autowired
     ProductTypeServiceImpl productTypeService;
 
-    @GetMapping("/list-product-type")
+    @GetMapping("/product-type")
     public List<ProductType> listall(){
         return productTypeService.findAllProductType();
     }
