@@ -22,10 +22,11 @@ public class ProductTypeController {
     }
 
     @PostMapping("/add-product-type")
-    public ProductType addProductType(@RequestBody ProductType TypeProductName){
-
-        TypeProductName.setActive(1);
-        return productTypeService.create(TypeProductName);
+    public ProductType addProductType(@RequestParam("TypeProductName") String TypeProductName){
+        ProductType productType = new ProductType();
+        productType.setTypeProductName(TypeProductName);
+        productType.setActive(1);
+        return productTypeService.create(productType);
     }
 
     @PutMapping("/edit-product-type")
