@@ -16,12 +16,12 @@ public class ProductTypeController {
     @Autowired
     ProductTypeServiceImpl productTypeService;
 
-    @GetMapping("/product-type")
+    @GetMapping("/get-all-product-type")
     public List<ProductType> listall(){
         return productTypeService.findAllProductType();
     }
 
-    @PostMapping("/product-type")
+    @PostMapping("/add-product-type")
     public ProductType addProductType(@RequestParam("TypeProductName") String TypeProductName){
         ProductType productType = new ProductType();
         productType.setTypeProductName(TypeProductName);
@@ -29,7 +29,7 @@ public class ProductTypeController {
         return productTypeService.create(productType);
     }
 
-    @PutMapping("/product-type")
+    @PutMapping("/edit-product-type")
     public ProductType editProductType(@RequestParam("TypeProductName") String TypeProductName,
                                 @RequestParam("Active")int Active,
                                 @RequestParam("id") Long id){
@@ -39,7 +39,7 @@ public class ProductTypeController {
         return productTypeService.create(ProductType);
     }
 
-    @DeleteMapping("/product-type")
+    @DeleteMapping("/drop-product-type")
     public ResponseEntity dropProductType(@RequestParam("id") Long id){
          productTypeService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
