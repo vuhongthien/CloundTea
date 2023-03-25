@@ -2,6 +2,7 @@ package com.service.cloudtea.controller.admin;
 
 import com.service.cloudtea.model.ProductType;
 import com.service.cloudtea.service.impl.ProductTypeServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cloud-tea")
+@RequiredArgsConstructor
 public class ProductTypeController {
 
     @Autowired

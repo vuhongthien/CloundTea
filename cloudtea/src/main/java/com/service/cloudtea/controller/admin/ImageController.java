@@ -2,6 +2,7 @@ package com.service.cloudtea.controller.admin;
 
 import com.service.cloudtea.model.ImageProduct;
 import com.service.cloudtea.service.impl.ImageServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +15,7 @@ import java.awt.*;
 
 @RestController
 @RequestMapping("/api/cloud-tea")
+@RequiredArgsConstructor
 public class ImageController {
     @Autowired
     ImageServiceImpl imageService;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductTypeServiceImpl implements ProductTypeService {
@@ -15,7 +16,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public List<ProductType> findAllProductType() {
-        return productTypeRepository.findAll().stream().filter(i-> i.getActive() ==1).toList();
+        return productTypeRepository.findAll().stream().filter(i-> i.getActive() ==1).collect(Collectors.toList());
     }
 
     @Override

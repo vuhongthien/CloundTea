@@ -4,6 +4,7 @@ import com.service.cloudtea.dto.ProductDto;
 import com.service.cloudtea.model.Product;
 import com.service.cloudtea.service.impl.ProductServiceImpl;
 import com.service.cloudtea.service.impl.ProductTypeServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import static com.service.cloudtea.utils.ProductUtils.calculateEndDate;
 
 @RestController
 @RequestMapping("/api/cloud-tea")
+@RequiredArgsConstructor
 public class ProductController {
     @Autowired
     ProductServiceImpl productService;

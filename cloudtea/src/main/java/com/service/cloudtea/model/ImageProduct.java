@@ -1,6 +1,6 @@
 package com.service.cloudtea.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 @Entity

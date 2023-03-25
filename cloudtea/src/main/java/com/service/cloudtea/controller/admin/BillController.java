@@ -2,6 +2,7 @@ package com.service.cloudtea.controller.admin;
 import com.service.cloudtea.model.Bill;
 import com.service.cloudtea.model.DetailBill;
 import com.service.cloudtea.service.impl.BillServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/cloud-tea")
+@RequiredArgsConstructor
 public class BillController {
 
     @Autowired
