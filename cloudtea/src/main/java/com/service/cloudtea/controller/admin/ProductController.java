@@ -61,7 +61,6 @@ public class ProductController {
      */
     @PostMapping("/product")
     public ProductDto addProduct(@RequestParam("type_product_id") Long typeProductId,
-                                 @RequestParam("product_image") MultipartFile productImage,
                                  @RequestParam("product_discount") float productDiscount,
                                  @RequestParam("product_name") String productName,
                                  @RequestParam("product_price") float productPrice,
@@ -70,7 +69,7 @@ public class ProductController {
 
     ) {
         Product product = new Product();
-        product.setImage(productImage.getOriginalFilename());
+//        product.setImage(productImage.getOriginalFilename());
         product.setDiscount(productDiscount);
         product.setProductName(productName);
         product.setPrice(productPrice);
