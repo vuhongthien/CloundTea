@@ -1,6 +1,7 @@
 package com.service.cloudtea.controller.admin;
 
 import com.service.cloudtea.model.Voucher;
+import com.service.cloudtea.service.ProductService;
 import com.service.cloudtea.service.impl.VoucherServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import java.time.LocalDateTime;
 public class VoucherController {
     @Autowired
     VoucherServiceImpl voucherService;
+    @Autowired
+    ProductService productService;
     @GetMapping("/voucher/{pageNumber}/{pageSize}")
     public Page<Voucher> listall(@PathVariable(name = "pageNumber") Integer pageNumber,
                                  @PathVariable(name = "pageSize") Integer pageSize){
@@ -36,6 +39,7 @@ public class VoucherController {
         voucher.setCreateAt(LocalDateTime.now());
         voucher.setEndAt(endAt);
         voucher.setProductId(productId);
+        voucher.setProduct(productService.findById(productId));
         voucher.setQuantity(quantity);
         return voucherService.create(voucher);
     }
