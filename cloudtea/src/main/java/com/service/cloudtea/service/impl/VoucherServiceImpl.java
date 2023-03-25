@@ -13,7 +13,7 @@ public class VoucherServiceImpl implements VoucherService {
     @Autowired
     private VoucherRepository voucherRepository;
     @Override
-    public Page<Voucher> findAllImage(Pageable pageable) {
+    public Page<Voucher> findAll(Pageable pageable) {
         return voucherRepository.findAll(pageable);
     }
 

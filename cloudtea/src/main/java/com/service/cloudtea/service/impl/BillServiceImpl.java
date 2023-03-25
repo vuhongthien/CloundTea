@@ -8,6 +8,9 @@ import com.service.cloudtea.repository.BillRepository;
 import com.service.cloudtea.repository.DetailBillRepository;
 import com.service.cloudtea.repository.VoucherRepository;
 import com.service.cloudtea.service.BillService;
+import com.service.cloudtea.service.CartService;
+import com.service.cloudtea.service.ProductService;
+import com.service.cloudtea.service.UserService;
 import com.service.cloudtea.status.StatusCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,9 +33,11 @@ public class BillServiceImpl implements BillService {
     @Autowired
     DetailBillRepository detailBillRepository;
     @Autowired
-    ProductServiceImpl productService;
+    ProductService productService;
     @Autowired
-    CartServiceImpl cartService;
+    CartService cartService;
+    @Autowired
+    UserService userService;
 
 
     @Override
@@ -47,12 +52,13 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public Bill create(Bill bill, DetailBill detailBill, String code) {
-
-        Bill b = new Bill();
-        b.setDaySet(LocalDateTime.now());
-        b.setUserId(bill.getUserId());
-        Bill b2 = billRepository.save(b);
+    public Bill create(Long idUser, String code) {
+        Bill bill = new Bill();
+        bill.setDaySet(LocalDateTime.now());
+        bill.setUserId(idUser);
+        User user = userService.findById(idUser);
+        bill.setUser(user);
+        Bill b2 = billRepository.save(bill);
         Collection<CartDto> c = cartService.showAll();
         if (c == null) {
             try {
@@ -125,8 +131,7 @@ public class BillServiceImpl implements BillService {
                 }
             }
         }
-        Double sum = acc;
-        b2.setTotalPrice(sum);
+        b2.setTotalPrice(acc);
         cartService.deleteCartAll();
         return billRepository.save(b2);
     }

@@ -21,7 +21,7 @@ public class DetailBillController {
                                     @PathVariable(name = "pageSize") Integer pageSize){
         return detailBillSerVice.findAllDetailBill(PageRequest.of(pageNumber,pageSize));
     }
-    @GetMapping("/get-detail-bill")
+    @GetMapping("/get-detail-bill/{pageNumber}/{pageSize}")
     public Page<DetailBill> listAllDetailBill(@RequestParam("idbill") Long id,
                                               @PathVariable(name = "pageNumber") Integer pageNumber,
                                               @PathVariable(name = "pageSize") Integer pageSize){

@@ -1,6 +1,7 @@
 package com.service.cloudtea.controller.admin;
 import com.service.cloudtea.model.Bill;
 import com.service.cloudtea.model.DetailBill;
+import com.service.cloudtea.service.UserService;
 import com.service.cloudtea.service.impl.BillServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,8 @@ public class BillController {
 
     @PostMapping("/bill")
     public Bill addBill(@RequestParam("user_id") Long userid, @RequestParam("voucher_code") String voucherCode){
-        Bill bill = new Bill();
-        bill.setUserId(userid);
-        DetailBill detailBill = new DetailBill();
-        return billService.create(bill, detailBill, voucherCode);
+
+        return billService.create(userid, voucherCode);
     }
 
     @GetMapping("/bill/{pageNumber}/{pageSize}")

@@ -22,7 +22,7 @@ public class VoucherController {
     @GetMapping("/voucher/{pageNumber}/{pageSize}")
     public Page<Voucher> listall(@PathVariable(name = "pageNumber") Integer pageNumber,
                                  @PathVariable(name = "pageSize") Integer pageSize){
-        return voucherService.findAllImage(PageRequest.of(pageNumber,pageSize));
+        return voucherService.findAll(PageRequest.of(pageNumber,pageSize));
     }
     @PostMapping("/voucher")
     public Voucher addVoucher(@RequestParam("voucher_code") String voucherCode,

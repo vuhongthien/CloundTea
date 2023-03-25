@@ -9,7 +9,7 @@ import java.util.List;
 public interface BillService {
     Page<Bill> findAllBill(Pageable pageable);
     List<Bill> listAll();
-    Bill create(Bill bill, DetailBill detailBill, String code);
+    Bill create(Long idUser, String code);
     Bill findById(Long id);
     void delete(Long id);
 }

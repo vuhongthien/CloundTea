@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/cloud-tea")
 public class CartController {
     @Autowired
     CartServiceImpl cartService;
