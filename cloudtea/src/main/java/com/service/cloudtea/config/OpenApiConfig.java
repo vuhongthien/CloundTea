@@ -16,7 +16,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 // Thiết lập các server dùng để test api
                 .servers(Lists.newArrayList(
-                        new Server().url("http://localhost:8080")
+                        new Server().url("https://cloundtea-production.up.railway.app")
                 ))
                 // info
                 .info(new Info().title("Cloud Tea")
