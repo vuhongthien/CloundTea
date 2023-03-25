@@ -4,6 +4,7 @@ import com.service.cloudtea.dto.ProductDto;
 import com.service.cloudtea.model.Product;
 import com.service.cloudtea.service.impl.ProductServiceImpl;
 import com.service.cloudtea.service.impl.ProductTypeServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,9 +60,12 @@ public class ProductController {
     /**
      * http://localhost:8080/api/add-product
      */
-    @PostMapping("/product")
+//    @PostMapping("/product")
+    @PostMapping(value = "/product",
+            consumes = {"multipart/form-data"})
+    @Operation(summary = "Create new product")
     public ProductDto addProduct(@RequestParam("type_product_id") Long typeProductId,
-                                 @RequestPart("product_image") MultipartFile productImage,
+                                 @RequestParam("product_image") MultipartFile productImage,
                                  @RequestParam("product_discount") float productDiscount,
                                  @RequestParam("product_name") String productName,
                                  @RequestParam("product_price") float productPrice,
