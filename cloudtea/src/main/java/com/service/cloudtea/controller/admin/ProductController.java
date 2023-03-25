@@ -90,7 +90,9 @@ public class ProductController {
     /**
      * http://localhost:8080/api/edit-product
      */
-    @PatchMapping("/product")
+    @PatchMapping(value = "/product",
+            consumes = {"multipart/form-data"})
+    @Operation(summary = "Update product")
     public ProductDto editProduct(@RequestParam("type_product_id") Long typeProductid,
                                   @RequestParam("product_id") Long productId,
                                   @RequestParam("product_image") MultipartFile productImage,
